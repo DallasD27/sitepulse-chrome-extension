@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "SitePulse",
+  "version": "1.0",
+  "description": "Track time spent on selected websites.",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "SitePulse"
+  }
+}
