@@ -32,7 +32,7 @@ Track how much time you spend on specific websites with real-time updates and da
 ---
 
 ## 📸 Preview
-![SitePulse Preview](screenshot.png)
+![SitePulse Preview](Screenshot.png)
 
 
 ---
