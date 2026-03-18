@@ -20,14 +20,14 @@ Track how much time you spend on specific websites with real-time updates and da
 
 ---
 
-## 📦 Installation
-
-1. Download or clone this repository
-2. Open Chrome and go to:
-   chrome://extensions
-3. Enable Developer Mode
-4. Click Load unpacked
-5. Select the project folder
+## 📦 Download and Install
+- Open the **Releases** section
+- Download the latest `sitepulse-extension.zip`
+- Extract the zip
+- Open `chrome://extensions`
+- Turn on **Developer Mode**
+- Click **Load unpacked**
+- Select the extracted folder
 
 ---
 
