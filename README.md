@@ -32,7 +32,7 @@ Track how much time you spend on specific websites with real-time updates and da
 ---
 
 ## 📸 Preview
-<img width="395" height="587" alt="image" src="https://github.com/user-attachments/assets/2a4bfd6d-dcf1-4130-ab17-3d069b3a6a3f" />
+![SitePulse Preview](screenshot.png)
 
 
 ---
