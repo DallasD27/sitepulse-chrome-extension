@@ -38,7 +38,7 @@ Track how much time you spend on specific websites with real-time updates and da
 ---
 
 ## 🔮 Future Improvements
-- Weekly usage charts
+- Weekly usage charts - DONE(3/18/2026)
 - Notifications for time limits
 - CSV export
 - Productivity analytics dashboard
