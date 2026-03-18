@@ -20,7 +20,7 @@ Track how much time you spend on specific websites with real-time updates and da
 
 ---
 
-## 📦 Download and Install
+##📦 Download and Install
 - Open the **Releases** section
 - Download the latest `sitepulse-extension.zip`
 - Extract the zip
@@ -32,7 +32,7 @@ Track how much time you spend on specific websites with real-time updates and da
 ---
 
 ## 📸 Preview
-![SitePulse Preview](Screenshot.png)
+![SitePulse Preview](screenshot.png)
 
 
 ---
