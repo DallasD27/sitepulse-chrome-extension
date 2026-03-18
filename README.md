@@ -25,8 +25,8 @@ Track how much time you spend on specific websites with real-time updates and da
 1. Download or clone this repository
 2. Open Chrome and go to:
    chrome://extensions
-3. Enable **Developer Mode**
-4. Click **Load unpacked**
+3. Enable Developer Mode
+4. Click Load unpacked
 5. Select the project folder
 
 ---
