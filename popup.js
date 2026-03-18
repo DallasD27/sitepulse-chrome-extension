@@ -11,12 +11,32 @@ function formatTime(milliseconds) {
   return `${hours}h ${minutes}m ${seconds}s`;
 }
 
+function getLast7Days() {
+  const days = [];
+
+  for (let i = 0; i < 7; i++) {
+    const date = new Date();
+    date.setDate(date.getDate() - i);
+    days.push(date.toISOString().split("T")[0]);
+  }
+
+  return days;
+}
+
 async function loadTrackedSites() {
   const result = await chrome.storage.local.get("trackedSites");
   const trackedSites = result.trackedSites || [];
   const siteList = document.getElementById("siteList");
 
   siteList.innerHTML = "";
+
+  if (trackedSites.length === 0) {
+    const li = document.createElement("li");
+    li.className = "empty-state";
+    li.textContent = "No sites added yet.";
+    siteList.appendChild(li);
+    return;
+  }
 
   trackedSites.forEach((site) => {
     const li = document.createElement("li");
@@ -47,11 +67,12 @@ async function loadTodayTime() {
 
   timeList.innerHTML = "";
 
-  const entries = Object.entries(todayLogs);
+  const entries = Object.entries(todayLogs).sort((a, b) => b[1] - a[1]);
 
   if (entries.length === 0) {
     const li = document.createElement("li");
-    li.textContent = "No tracked time yet.";
+    li.className = "empty-state";
+    li.textContent = "No tracked time yet today.";
     timeList.appendChild(li);
     return;
   }
@@ -68,6 +89,51 @@ async function loadTodayTime() {
     li.appendChild(siteSpan);
     li.appendChild(timeSpan);
     timeList.appendChild(li);
+  });
+}
+
+async function loadWeeklyTime() {
+  const result = await chrome.storage.local.get("timeLogs");
+  const timeLogs = result.timeLogs || {};
+  const weeklyList = document.getElementById("weeklyList");
+  const last7Days = getLast7Days();
+  const weeklyTotals = {};
+
+  weeklyList.innerHTML = "";
+
+  last7Days.forEach((day) => {
+    const dayLogs = timeLogs[day] || {};
+
+    Object.entries(dayLogs).forEach(([site, time]) => {
+      if (!weeklyTotals[site]) {
+        weeklyTotals[site] = 0;
+      }
+      weeklyTotals[site] += time;
+    });
+  });
+
+  const entries = Object.entries(weeklyTotals).sort((a, b) => b[1] - a[1]);
+
+  if (entries.length === 0) {
+    const li = document.createElement("li");
+    li.className = "empty-state";
+    li.textContent = "No tracked time yet this week.";
+    weeklyList.appendChild(li);
+    return;
+  }
+
+  entries.forEach(([site, time]) => {
+    const li = document.createElement("li");
+
+    const siteSpan = document.createElement("span");
+    siteSpan.textContent = site;
+
+    const timeSpan = document.createElement("span");
+    timeSpan.textContent = formatTime(time);
+
+    li.appendChild(siteSpan);
+    li.appendChild(timeSpan);
+    weeklyList.appendChild(li);
   });
 }
 
@@ -99,10 +165,12 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
 
   if (changes.timeLogs) {
     loadTodayTime();
+    loadWeeklyTime();
   }
 });
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadTrackedSites();
   await loadTodayTime();
+  await loadWeeklyTime();
 });

@@ -8,8 +8,9 @@
 <body>
   <div class="container">
     <h1>SitePulse</h1>
+    <p class="subtitle">Track your website usage</p>
 
-    <section>
+    <section class="card">
       <h2>Add Website</h2>
       <div class="row">
         <input type="text" id="siteInput" placeholder="example.com">
@@ -17,14 +18,19 @@
       </div>
     </section>
 
-    <section>
+    <section class="card">
       <h2>Tracked Sites</h2>
-      <ul id="siteList"></ul>
+      <ul id="siteList" class="list"></ul>
     </section>
 
-    <section>
-      <h2>Today's Time</h2>
-      <ul id="timeList"></ul>
+    <section class="card">
+      <h2>Today</h2>
+      <ul id="timeList" class="list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>This Week</h2>
+      <ul id="weeklyList" class="list"></ul>
     </section>
   </div>
 
